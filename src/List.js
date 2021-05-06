@@ -3,18 +3,17 @@ import Header from '../components/Header.js'
 import { Link } from 'react-router-dom'
 import JSONDATA from '../MOCK_DATA.json'
 import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import "../../src/i18n"
+
 export default function List() {
 
     const [searchTerm, setSearchTerm] = useState('')
-    const { t } = useTranslation();
+
     return (
         <div>
             <Header />
             <div class="container">
                 <div class="input-group rounded" id="search">
-                    <input type="search" class="form-control rounded" placeholder={t("find.f")} aria-label="Search"
+                    <input type="search" class="form-control rounded" placeholder="Поиск" aria-label="Search"
                         aria-describedby="search-addon"
                         onChange={event => { setSearchTerm(event.target.value) }} />
                     <span class="input-group-text border-0" id="search-addon">

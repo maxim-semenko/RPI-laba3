@@ -1,41 +1,41 @@
 import React from 'react';
 import Header from '../components/Header.js'
-import imageWriter from '../img/Kolas.jpg' // relative path to image 
-import imageBook1 from '../img/Kolas-book1.jpg' // relative path to image 
-import imageBook2 from '../img/Kolas-book2.jpg' // relative path to image 
-
+import imageWriter from '../img/Dunin.jpeg' // relative path to image 
+import imageBook1 from '../img/Dunin_1.jpg' // relative path to image 
+import imageBook2 from '../img/Dunin_2.jpg' // relative path to image 
+import { useTranslation } from 'react-i18next'
+import "../../src/i18n"
 
 import { Timeline, TimelineItem } from 'vertical-timeline-component-for-react';
 
-export default function Dunin() {
+export default function Kolas() {
+
+    const { t } = useTranslation();
+
     return (
         <div>
             <Header />
             <div class="container">
-                <h1 class="jumbotron-heading">Яку́б Ко́лас</h1>
+                <h1 class="jumbotron-heading">{t("Dunin.name")}</h1>
                 <div class="row">
                     <div class="col-sm">
-                        <img alt="Якуб Колас" src={imageWriter} id="imgWriterDay" class="img-fluid"></img>
+                        <img alt={t("Dunin.name")} src={imageWriter} id="imgWriterDay" class="img-fluid"></img>
                     </div>
                     <div class="col-sm">
                         <p class="lead text-muted" id="description">
-                            <strong>Имя:</strong> Яку́б Ко́лас
+                            <strong>{t("t.name")}</strong> {t("Dunin.name")}
                             <br></br>
-                            <strong>Годы жизни:</strong> 3 ноября 1882 г. – 13 августа 1956 г.
+                            <strong>{t("t.years-life")}</strong> {t("Dunin.life-time")}
                             <br></br>
-                            <strong>Краткое описание:</strong> Яку́б Ко́лас — белорусский советский писатель, драматург,
-                            поэт и переводчик, общественный деятель. Один из классиков и основоположников
-                            новой белорусской литературы. Народный поэт Белорусской ССР.
-                            Академик АН Белорусской ССР. Член СП СССР. Заслуженный деятель
-                            науки Белорусской ССР. Член ВКП с 1945 года."
-                        </p>
+                            <strong>{t("t.brief-description")}</strong>{t("Dunin.description")}
+                            </p>
                     </div>
                 </div>
             </div>
             <Timeline lineColor={'#ddd'}>
                 <TimelineItem
                     key="001"
-                    dateText="22 октября (3 ноября) 1882"
+                    dateText={t("Dunin.date1")}
                     dateInnerStyle={{ background: '#76bb7f', color: 'white' }}
                     style={{ color: '#76bb7f' }}
                     bodyContainerStyle={{
@@ -45,16 +45,14 @@ export default function Dunin() {
                         boxShadow: '0.5rem 0.5rem 2rem 0 rgba(0, 0, 0, 0.2)',
                     }}
                 >
-                    <h3 style={{ color: '#76bb7f' }}>День рождение</h3>
+                    <h3 style={{ color: '#76bb7f' }}>{t("t.birthday")}</h3>
                     <p style={{ textAlign: 'justify' }}>
-                        Родился в деревне Акинчицы (теперь территория города Столбцы Столбцовского района Минской
-                        области Белоруссии), в православной семье лесника Михаила Казимировича (Михася)
-                        Мицкевича и домохозяйки Анны Юрьевны Лосик. Предки по отцовской линии — католики.
+                    {t("Dunin.date1-description")}
                     </p>
                 </TimelineItem>
                 <TimelineItem
                     key="002"
-                    dateText="1902 – 1914"
+                    dateText="1835 – 1880 "
                     dateInnerStyle={{ background: '#61b8ff', color: 'white' }}
                     style={{ color: '#61b8ff' }}
                     bodyContainerStyle={{
@@ -64,21 +62,14 @@ export default function Dunin() {
                         boxShadow: '0.5rem 0.5rem 2rem 0 rgba(0, 0, 0, 0.2)',
                     }}
                 >
-                    <h3 style={{ color: '#61b8ff' }}>Деятельность</h3>
+                    <h3 style={{ color: '#61b8ff' }}>{t("t.activity")}</h3>
                     <p style={{ textAlign: 'justify' }}>
-                        Окончил народную школу, в 1902 году — Несвижскую учительскую семинарию. Работал учителем на
-                        Пинщине (1902—1906). В 1906 году первая публикация — стихотворение «Край родимый» в белорусской
-                        газете «Наша доля». В 1907 году возглавлял литературный отдел белорусской газеты «Наша Нива» в Вильне.
-                    </p>
-                    <p style={{ textAlign: 'justify' }}>
-                        За участие в организации нелегального учительского съезда был приговорён к заключению, которое отбывал
-                        в минской тюрьме (1908—1911). В 1912—1914 годах учительствовал в Пинске. Здесь в 1914 году у него родился
-                        его старший сын Даниил, который впоследствии стал создателем и первым директором музея своего отца.
+                    {t("Dunin.date2-description")}
                     </p>
                 </TimelineItem>
                 <TimelineItem
                     key="004"
-                    dateText="13 августа 1956"
+                    dateText={t("Dunin.date3")}
                     dateInnerStyle={{ background: '#e86971' }}
                     style={{ color: '#e86971' }}
                     bodyContainerStyle={{
@@ -88,34 +79,32 @@ export default function Dunin() {
                         boxShadow: '0.5rem 0.5rem 2rem 0 rgba(0, 0, 0, 0.2)',
                     }}
                 >
-                    <h3 style={{ color: '#e86971' }}>День смерти</h3>
+                    <h3 style={{ color: '#e86971' }}>{t("t.death")}</h3>
                     <p>
-                        В конце жизни много и часто болел, в частности, перенёс 26 воспалений легких. Якуб Колас скоропостижно скончался
-                        13 августа 1956 года. Похоронен на Военном кладбище в Минске.
+                    {t("Dunin.date3-description")}
                     </p>
                 </TimelineItem>
             </Timeline>
             <div class="container">
-                <h1 class="jumbotron-heading">Галерея</h1>
+                <h1 class="jumbotron-heading">{t("t.gallery")}</h1>
                 <div class="row">
                     <div class="col-sm">
-                        <img alt="Якуб Колас" src={imageBook1} id="imgWriterDay" class="img-fluid"></img>
+                        <img alt={t("Dunin.name")} src={imageBook1} id="imgWriterDay" class="img-fluid"></img>
                     </div>
                     <div class="col-sm">
-                        <img alt="Якуб Колас" src={imageBook2} id="imgWriterDay" class="img-fluid"></img>
+                        <img alt={t("Dunin.name")} src={imageBook2} id="imgWriterDay" class="img-fluid"></img>
                     </div>
                 </div>
 
                 <br></br>
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe width="2118" height="908" src="https://www.youtube.com/embed/GNvCm0tK9gw" title="YouTube video player"
-                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
-                picture-in-picture" allowfullscreen></iframe>
+                <iframe width="1280" height="720" src="https://www.youtube.com/embed/NzDAnbltnPA" title="YouTube video player" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <div class="container">
                 <div class="map-responsive">
-                    <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Belarus+Stolbtsy"
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9553.88632233111!2d29.167361027641505!3d53.22732235417633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46d73458aeecdb69%3A0x764fc680011e0a60!2z0J_QsNC90Y7RiNC60L7QstC40YfQuCwg0JHQtdC70LDRgNGD0YHRjA!5e0!3m2!1sru!2sus!4v1620052558828!5m2!1sru!2sus"
                         width="600" height="450" frameborder="0" style={{ border: 0 }} allowfullscreen></iframe>
                 </div>
                 <br></br>
