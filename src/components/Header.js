@@ -1,7 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import i18n from '../../src/i18n';
 import { useTranslation } from 'react-i18next'
+import { Form } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
+
 
 export default function Header() {
 
@@ -12,20 +15,26 @@ export default function Header() {
     const { t } = useTranslation();
 
     return (
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <h3>{t("header.poets")}</h3>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link"><Link to="/" class="nav-link">{t("home.main")}</Link></a></li>
-                    <li class="nav-item"><a class="nav-link"><Link to="/List" class="nav-link">{t("home.list")}</Link></a></li>
-                    <li class="nav-item"><a class="nav-link" onClick={() => changeLanguage('ru')}><Link class="nav-link">{t("home.lng-ru")}</Link></a></li>
-                    <li class="nav-item"><a class="nav-link" onClick={() => changeLanguage('en')}><Link class="nav-link">{t("home.lng-en")}</Link></a></li>
-                </ul>
-            </div>
-        </nav>
+        <Navbar bg="light" expand="lg">
+            <Navbar.Brand href="/"><h3>{t("header.poets")}</h3></Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="mr-auto">
+                    <Nav.Link href="/">{t("home.main")}</Nav.Link>
+                    <Nav.Link href="/List">{t("home.list")}</Nav.Link>
+                </Nav>
+                <Form inline>
+                    <Form>
+                        <Form.Group>
+                            <Form.Control as="select" id="selectLng" custom onChange={() => changeLanguage(document.getElementById("selectLng").value)}>
+                                <option value="ru">{t("home.lng-ru")}</option>
+                                <option value="en">{t("home.lng-en")}</option>
+                            </Form.Control>
+                        </Form.Group>
+                    </Form>
+                </Form>
+            </Navbar.Collapse>
+        </Navbar>
     );
 
 }

@@ -5,6 +5,10 @@ import JSONDATA from '../MOCK_DATA.json'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import "../../src/i18n"
+import { Container } from 'react-bootstrap'
+import { ListGroup } from 'react-bootstrap'
+
+
 export default function List() {
 
     const [searchTerm, setSearchTerm] = useState('')
@@ -12,18 +16,13 @@ export default function List() {
     return (
         <div>
             <Header />
-            <div class="container">
+            <Container>
                 <div class="input-group rounded" id="search">
                     <input type="search" class="form-control rounded" placeholder={t("find.f")} aria-label="Search"
                         aria-describedby="search-addon"
                         onChange={event => { setSearchTerm(event.target.value) }} />
-                    <span class="input-group-text border-0" id="search-addon">
-                        <button type="submit" id="btn-search">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </span>
                 </div>
-                <ul class="list-group">
+                <ListGroup>
                     {JSONDATA.filter((val) => {
                         if (searchTerm == "") {
                             return val
@@ -31,10 +30,10 @@ export default function List() {
                             return val
                         }
                     }).map((val, key) => {
-                        return <li class="list-group-item" key={key}><a><Link to={val.link}>{val.first_name} {val.last_name}</Link></a></li>
+                        return <ListGroup.Item key={key}><Link to={val.link}>{val.first_name} {val.last_name}</Link></ListGroup.Item>
                     })}
-                </ul>
-            </div>
+                </ListGroup>
+            </Container>
         </div>
     );
 }

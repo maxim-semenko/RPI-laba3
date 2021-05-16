@@ -14,10 +14,7 @@ export default function Home() {
         <div>
             <Header />
             <About />
-            <WriteDay
-                name={t("Kolas.name")}
-                date={t("Kolas.life-time")}
-                description={t("Kolas.description")}/>
+            <WriteDay />
             <AboutDevelopers />
         </div>
     );
